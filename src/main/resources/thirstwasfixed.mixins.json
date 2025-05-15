@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "info.partonetrain.thirstwasfixed.mixin",
+  "plugin": "info.partonetrain.thirstwasfixed.MixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PotionItemMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
