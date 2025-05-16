@@ -31,6 +31,9 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (Arrays.asList(packageTree).contains("ae")) {
             return LoadingModList.get().getModFileById("ars_elemental") != null;
         }
+        if (Arrays.asList(packageTree).contains("ftbum")) {
+            return LoadingModList.get().getModFileById("ftbultimine") != null;
+        }
 
         return true;
     }

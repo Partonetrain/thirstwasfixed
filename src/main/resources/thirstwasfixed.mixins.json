@@ -5,10 +5,13 @@
   "plugin": "info.partonetrain.thirstwasfixed.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "LayeredCauldronBlockMixin",
+    "PlayerThirstMixin",
     "PotionItemMixin",
     "ae.EverfullUrnBlockMixin",
     "ae.EverfullUrnTileMixin",
-    "an.PotionFlaskItemMixin"
+    "an.PotionFlaskItemMixin",
+    "ftbum.FTBUltimineMixin"
   ],
   "client": [],
   "server": [],

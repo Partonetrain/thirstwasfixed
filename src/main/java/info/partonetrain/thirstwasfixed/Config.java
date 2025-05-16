@@ -9,6 +9,9 @@ public class Config
 
     public static ModConfigSpec.BooleanValue FIX_209;
     public static ModConfigSpec.BooleanValue FIX_CAULDRONS;
+    public static ModConfigSpec.BooleanValue DRINK_CAULDRONS;
+    public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
+    public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
     public static ModConfigSpec.BooleanValue AN_FLASK_EMPTY;
@@ -16,6 +19,8 @@ public class Config
     public static ModConfigSpec.BooleanValue AN_EVERFULL_FILL_FROM;
     public static ModConfigSpec.BooleanValue AN_EVERFULL_REQUESTS_SOURCE;
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
+    public static ModConfigSpec.IntValue ULTIMINE_REQUIRES_THIRST;
+    //public static ModConfigSpec.IntValue ULTIMINE_USES_THIRST;
 
     static
     {
@@ -35,6 +40,17 @@ public class Config
                 .comment("You should only turn this on if there are already cauldrons in your world that are missing a purity state, otherwise there may be significant performance impact for no reason")
                 .comment("This shouldn't be needed for anything else that stores water; water cauldrons are just unusual since their purity is stored in the blockstate")
                 .define("Fix Cauldrons", false);
+        DRINK_CAULDRONS = BUILDER
+                .comment("Whether or not to allow drinking from water cauldrons by right-clicking them with an empty hand")
+                .define("Drink Cauldrons", true);
+        THIRST_BONUS_REQUIREMENT = BUILDER
+                .comment("The amount of thirst required to gain a speed bonus")
+                .comment("If 0, there will be no speed bonus")
+                .defineInRange("Thirst Bonus Requirement", 0, 0, 20);
+        THIRST_BONUS_VALUE = BUILDER
+                .comment("The amount of speed bonus to give when the Thirst Bonus Requirement is met")
+                .comment("This uses the add_multiplied_total operation, so 0.1 = 10% speed increase")
+                .defineInRange("Thirst Bonus Value", 0.1, 0, 1);
         BUILDER.pop();
 
         BUILDER.push("Ars Nouveau");
@@ -70,6 +86,22 @@ public class Config
                 .comment("Determined by \"waterUrnCost\" in the Ars Elemental config")
                 .comment("Requires \"Fill from Everfull Urn\" to be true")
                 .define("Everfull Urn Requests Source", true);
+        BUILDER.pop();
+
+        BUILDER.push("FTB Ultimine");
+        ULTIMINE_REQUIRES_THIRST = BUILDER
+                .comment("The amount of thirst required to use FTB Ultimine")
+                .defineInRange("Ultimine Requires Thirst", 0, 0, 20);
+        /*
+        * Unfortunately this can't work because Mixins aren't capable of breaking loops
+        * it *would* go here:
+        * https://github.com/FTBTeam/FTB-Ultimine/blob/de88ba49bcad8d7d6c4dbc766cd310f3521a4cf5/common/src/main/java/dev/ftb/mods/ftbultimine/FTBUltimine.java#L244
+        ULTIMINE_USES_THIRST = BUILDER
+                .comment("The amount of thirst used by per block mined with FTB Ultimine")
+                .comment("Thirst is always automatically deducted with Hunger, so if you want only Thirst to be deducted, set exhaustion_per_block to 0 in the FTB Ultimine config")
+                .defineInRange("Thirst Exhaustion Per Block", 0, 0, 20);
+
+         */
         BUILDER.pop();
     }
 
