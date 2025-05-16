@@ -2,6 +2,7 @@ package info.partonetrain.thirstwasfixed.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.ghen.thirst.content.thirst.PlayerThirst;
+import info.partonetrain.thirstwasfixed.Config;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +19,7 @@ public class PotionItemMixin {
     @Inject(method = "finishUsingItem", at = @At("TAIL"))
     public void onFinishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving, CallbackInfoReturnable<ItemStack> cir, @Local Player player)
     {
-        if(player != null)
+        if(Config.FIX_209.get() && player != null)
         {
             PlayerThirst.drink(stack, player);
         }

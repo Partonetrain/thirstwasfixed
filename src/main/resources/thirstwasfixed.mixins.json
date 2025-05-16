@@ -5,7 +5,10 @@
   "plugin": "info.partonetrain.thirstwasfixed.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PotionItemMixin"
+    "PotionItemMixin",
+    "ae.EverfullUrnBlockMixin",
+    "ae.EverfullUrnTileMixin",
+    "an.PotionFlaskItemMixin"
   ],
   "client": [],
   "server": [],

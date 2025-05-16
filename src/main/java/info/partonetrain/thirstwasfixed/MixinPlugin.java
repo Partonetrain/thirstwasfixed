@@ -1,6 +1,7 @@
 package info.partonetrain.thirstwasfixed;
 
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -25,10 +26,10 @@ public class MixinPlugin implements IMixinConfigPlugin {
         String[] packageTree = mixinClassName.split("\\.");
 
         if (Arrays.asList(packageTree).contains("an")) {
-            return ModList.get().isLoaded("ars_nouveau");
+            return LoadingModList.get().getModFileById("ars_nouveau") != null;
         }
         if (Arrays.asList(packageTree).contains("ae")) {
-            return ModList.get().isLoaded("ars_elemental");
+            return LoadingModList.get().getModFileById("ars_elemental") != null;
         }
 
         return true;
