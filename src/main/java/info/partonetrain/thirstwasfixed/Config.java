@@ -10,14 +10,16 @@ public class Config
     public static ModConfigSpec.BooleanValue FIX_209;
     public static ModConfigSpec.BooleanValue FIX_CAULDRONS;
     public static ModConfigSpec.BooleanValue DRINK_CAULDRONS;
+    public static ModConfigSpec.IntValue RAINWATER_PURITY;
+    public static ModConfigSpec.IntValue DRIPSTONE_PURITY;
     public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
     public static ModConfigSpec.BooleanValue AN_FLASK_EMPTY;
     public static ModConfigSpec.IntValue AN_FLASK_SIZE;
-    public static ModConfigSpec.BooleanValue AN_EVERFULL_FILL_FROM;
-    public static ModConfigSpec.BooleanValue AN_EVERFULL_REQUESTS_SOURCE;
+    public static ModConfigSpec.BooleanValue AE_EVERFULL_FILL_FROM;
+    public static ModConfigSpec.BooleanValue AE_EVERFULL_REQUESTS_SOURCE;
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
     public static ModConfigSpec.IntValue ULTIMINE_REQUIRES_THIRST;
     //public static ModConfigSpec.IntValue ULTIMINE_USES_THIRST;
@@ -42,7 +44,14 @@ public class Config
                 .define("Fix Cauldrons", false);
         DRINK_CAULDRONS = BUILDER
                 .comment("Whether or not to allow drinking from water cauldrons by right-clicking them with an empty hand")
+                .comment("The amount of thirst/quenchness restored is set in the Thirst config handDrinkingHydration and handDrinkingQuenched, and these values are used even if canDrinkByHand is false")
                 .define("Drink Cauldrons", true);
+        RAINWATER_PURITY = BUILDER
+                .comment("The purity of rain water when it fills a cauldron")
+                .defineInRange("Rainwater Purity", 3, 0, 3);
+        DRIPSTONE_PURITY = BUILDER
+                .comment("The purity of water when Pointed Dripstone fills a cauldron")
+                .defineInRange("Dripstone Purity", 0, 0, 3);
         THIRST_BONUS_REQUIREMENT = BUILDER
                 .comment("The amount of thirst required to gain a speed bonus")
                 .comment("If 0, there will be no speed bonus")
@@ -77,11 +86,11 @@ public class Config
                 .comment("Water that is bucketed/bottled from, or transferred to a cauldron will have this purity")
                 .comment("(In other cases, the purity will be the default purity set in the Thirst config)")
                 .defineInRange("Everfull Urn Purity", 2, 1, 3);
-        AN_EVERFULL_FILL_FROM = BUILDER
+        AE_EVERFULL_FILL_FROM = BUILDER
                 .comment("Whether or not water with purity can be taken from the Everfull Urn with bottles and buckets")
                 .comment("If Potion Flasks Water Blocks is true, potion flasks will also be able to pick up water from the Everfull Urn")
                 .define("Fill from Everfull Urn", true);
-        AN_EVERFULL_REQUESTS_SOURCE = BUILDER
+        AE_EVERFULL_REQUESTS_SOURCE = BUILDER
                 .comment("Whether or not filling a bucket/bottle/flask from the Everfull Urn consumes nearby Source")
                 .comment("Determined by \"waterUrnCost\" in the Ars Elemental config")
                 .comment("Requires \"Fill from Everfull Urn\" to be true")

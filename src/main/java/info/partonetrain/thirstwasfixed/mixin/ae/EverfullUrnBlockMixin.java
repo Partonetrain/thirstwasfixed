@@ -49,7 +49,7 @@ public class EverfullUrnBlockMixin extends Block {
     @Override
     @Unique
     protected @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if(Config.AN_EVERFULL_FILL_FROM.get() && thirstwasfixed$requestSourceIfConfigNeeds(level, pos)){
+        if(Config.AE_EVERFULL_FILL_FROM.get() && thirstwasfixed$requestSourceIfConfigNeeds(level, pos)){
             if(stack.is(Items.GLASS_BOTTLE)){
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                 ItemStack newStack = PotionContents.createItemStack(Items.POTION, Potions.WATER);
@@ -90,7 +90,7 @@ public class EverfullUrnBlockMixin extends Block {
 
     @Unique
     private boolean thirstwasfixed$requestSourceIfConfigNeeds(Level level, BlockPos pos) {
-        if (!Config.AN_EVERFULL_REQUESTS_SOURCE.get()) {
+        if (!Config.AE_EVERFULL_REQUESTS_SOURCE.get()) {
             return true;
         } else {
             EverfullUrnTile blockEntity = (EverfullUrnTile) level.getBlockEntity(pos);

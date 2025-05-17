@@ -57,12 +57,12 @@ public class PotionFlaskItemMixin extends Item {
                 MultiPotionContents multiPotionContents = itemstack.getComponents().get(DataComponentRegistry.MULTI_POTION.get());
                 if (ArsNouveauHelper.isContentsEmptyOrWater(multiPotionContents)) {
                     if (multiPotionContents.usesRemaining(itemstack) < multiPotionContents.maxUses()) {
-                        if (state.getValue(LayeredCauldronBlock.LEVEL) >= LayeredCauldronBlock.MIN_FILL_LEVEL) {
+                        if (state.getValue(LayeredCauldronBlock.LEVEL) >= LayeredCauldronBlock.MIN_FILL_LEVEL) { //shouldn't be necessary but you never know
                             int nextValue = state.getValue(LayeredCauldronBlock.LEVEL) - 1;
                             if(nextValue == 0){
                                 level.setBlock(context.getClickedPos(), Blocks.CAULDRON.defaultBlockState(), 3);
                             }else{
-                                level.setBlock(context.getClickedPos(), state.setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) - 1), 3);
+                                level.setBlock(context.getClickedPos(), state.setValue(LayeredCauldronBlock.LEVEL, nextValue), 3);
                             }
                             level.playSound(context.getPlayer(), context.getClickedPos(), SoundEvents.BOTTLE_FILL, SoundSource.PLAYERS, 1.0F, 1.0F);
                             ItemStack newStack = itemstack.copy();

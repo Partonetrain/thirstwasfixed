@@ -21,7 +21,7 @@ public class EverfullUrnTileMixin {
         if(level.getBlockState(toPos).is(Blocks.WATER_CAULDRON)){
             BlockState state = level.getBlockState(toPos);
             level.setBlock(toPos, state.setValue(WaterPurity.BLOCK_PURITY, Config.AE_EVERFULL_PURITY.getAsInt() + 1), 3);
-            //block purity of offset by 1
+            //block purity is offset by 1
         }
     }
 }
