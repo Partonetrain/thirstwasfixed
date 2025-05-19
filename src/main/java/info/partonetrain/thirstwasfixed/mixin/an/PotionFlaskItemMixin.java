@@ -49,7 +49,7 @@ public class PotionFlaskItemMixin extends Item {
     //pick up water from cauldron
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
     public void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
-        if(Config.AN_FLASK_PICKS_UP_WATER.get() && !context.isSecondaryUseActive()) {
+        if(Config.AN_FLASK_PICKS_UP_CAULDRON.get() && !context.isSecondaryUseActive()) {
             Level level = context.getLevel();
             BlockState state = level.getBlockState(context.getClickedPos());
             if (state.is(Blocks.WATER_CAULDRON)) {
@@ -83,12 +83,13 @@ public class PotionFlaskItemMixin extends Item {
         }
     }
 
-    //pick up water from water source block (or waterlogged block)
+
     @Inject(method = "use", at = @At("TAIL"), cancellable = true)
     public void use(@NotNull Level level, Player player, @NotNull InteractionHand hand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir){
             ItemStack itemstack = player.getItemInHand(hand);
             MultiPotionContents multiPotionContents = itemstack.getComponents().get(DataComponentRegistry.MULTI_POTION.get());
 
+            //empty flask
             if(Config.AN_FLASK_EMPTY.get() && multiPotionContents.usesRemaining(itemstack) > 0 && hand == InteractionHand.OFF_HAND
                     && player.getMainHandItem().isEmpty() && player.isSecondaryUseActive()) {
                 var newContents = new MultiPotionContents(0, PotionContents.EMPTY, multiPotionContents.maxUses());
@@ -97,6 +98,7 @@ public class PotionFlaskItemMixin extends Item {
                 PortUtil.sendMessageCenterScreen(player, Component.translatable("thirstwasfixed.flask.empty")); //AN doesn't use this method, hopefully it doesn't get removed!
                 cir.setReturnValue(InteractionResultHolder.sidedSuccess(newStack, level.isClientSide()));
             }
+            //pick up water from water source block (or waterlogged block)
             else if(Config.AN_FLASK_PICKS_UP_WATER.get() && ArsNouveauHelper.isContentsEmptyOrWater(multiPotionContents)){
                 if(multiPotionContents.usesRemaining(itemstack) < multiPotionContents.maxUses()){
                     BlockHitResult blockhitresult = Item.getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);

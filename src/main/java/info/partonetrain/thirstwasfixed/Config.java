@@ -16,6 +16,7 @@ public class Config
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
+    public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_CAULDRON;
     public static ModConfigSpec.BooleanValue AN_FLASK_EMPTY;
     public static ModConfigSpec.IntValue AN_FLASK_SIZE;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FILL_FROM;
@@ -68,9 +69,12 @@ public class Config
                 .comment("Whether or not the Ars Nouveau Potion Flask should restore thirst when consumed")
                 .define("Potion Flasks Restore Thirst", true);
         AN_FLASK_PICKS_UP_WATER = BUILDER
-                .comment("Whether or not the Ars Nouveau Potion Flask should pick up water from water source blocks or cauldrons like Glass Bottles")
+                .comment("Whether or not the Ars Nouveau Potion Flask should pick up water from water source blocks like Glass Bottles")
                 .comment("Note: Potion flasks, like regular potions, do not store purity, and are always considered 100% pure")
                 .define("Potion Flasks Water Blocks", true);
+        AN_FLASK_PICKS_UP_CAULDRON = BUILDER
+                .comment("Whether or not the Ars Nouveau Potion Flask should pick up water from Cauldrons like Glass Bottles")
+                .define("Potion Flasks Cauldron", true);
         AN_FLASK_EMPTY = BUILDER
                 .comment("If true, a potion flask's contents can be discarded by shift-right-clicking it in your off hand while your main hand is empty")
                 .define("Empty Potion Flasks", true);
