@@ -68,7 +68,7 @@ public class EverfullUrnBlockMixin extends Block {
                 level.playSound(player, pos, SoundEvents.BUCKET_FILL, SoundSource.PLAYERS, 1.0F, 1.0F);
                 return ItemInteractionResult.SUCCESS;
             }
-            else if(Config.AN_FLASK_PICKS_UP_WATER.get() && ArsNouveauHelper.isStackFlask(stack)){
+            else if(Config.AE_EVERFULL_FLASK.get() && ArsNouveauHelper.isStackFlask(stack)){
                 MultiPotionContents multiPotionContents = stack.getComponents().get(DataComponentRegistry.MULTI_POTION.get());
                 if(ArsNouveauHelper.isContentsEmptyOrWater(multiPotionContents)){
                     if(multiPotionContents.usesRemaining(stack) < multiPotionContents.maxUses()){

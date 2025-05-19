@@ -7,7 +7,7 @@ public class Config
     private static final ModConfigSpec.Builder BUILDER;
     public final static ModConfigSpec SPEC;
 
-    public static ModConfigSpec.BooleanValue FIX_209;
+//    public static ModConfigSpec.BooleanValue FIX_209;
     public static ModConfigSpec.BooleanValue FIX_CAULDRONS;
     public static ModConfigSpec.BooleanValue DRINK_CAULDRONS;
     public static ModConfigSpec.IntValue RAINWATER_PURITY;
@@ -19,6 +19,7 @@ public class Config
     public static ModConfigSpec.BooleanValue AN_FLASK_EMPTY;
     public static ModConfigSpec.IntValue AN_FLASK_SIZE;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FILL_FROM;
+    public static ModConfigSpec.BooleanValue AE_EVERFULL_FLASK;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_REQUESTS_SOURCE;
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
     public static ModConfigSpec.IntValue ULTIMINE_REQUIRES_THIRST;
@@ -33,10 +34,10 @@ public class Config
 
     public static void register(ModConfigSpec.Builder builder){
         BUILDER.push("General");
-        FIX_209 = BUILDER
-                .comment("Whether or not to fix https://github.com/ghen-git/Thirst-Mod/issues/209")
-                .comment("As of 2.1.3 this has been fixed so you shouldn't need it")
-                .define("Fix #209", false);
+//        FIX_209 = BUILDER
+//                .comment("Whether or not to fix https://github.com/ghen-git/Thirst-Mod/issues/209")
+//                .comment("As of 2.1.3 this has been fixed so you shouldn't need it")
+//                .define("Fix #209", false);
         FIX_CAULDRONS = BUILDER
                 .comment("Whether or not to set water cauldrons without a purity state to the default purity (set in Thirst config) on chunk load")
                 .comment("You should only turn this on if there are already cauldrons in your world that are missing a purity state, otherwise there may be significant performance impact for no reason")
@@ -82,14 +83,18 @@ public class Config
 
         BUILDER.push("Ars Elemental");
         AE_EVERFULL_PURITY = BUILDER
-                .comment("The purity of the water provided by the Everfull Urn")
+                .comment("The purity of the water provided by the Everfull Urn (AKA Urn Of Endless Waters)")
                 .comment("Water that is bucketed/bottled from, or transferred to a cauldron will have this purity")
                 .comment("(In other cases, the purity will be the default purity set in the Thirst config)")
                 .defineInRange("Everfull Urn Purity", 2, 1, 3);
         AE_EVERFULL_FILL_FROM = BUILDER
                 .comment("Whether or not water with purity can be taken from the Everfull Urn with bottles and buckets")
-                .comment("If Potion Flasks Water Blocks is true, potion flasks will also be able to pick up water from the Everfull Urn")
+                .comment("If Potion Flasks Everfull Urn is true, potion flasks will also be able to pick up water from the Everfull Urn")
                 .define("Fill from Everfull Urn", true);
+        AE_EVERFULL_FLASK = BUILDER
+                .comment("Whether or not the Flask can be filled from the Everfull Urn")
+                .comment("Requires Fill from Everfull Urn to be true")
+                .define("Fill Flask from Everfull Urn", true);
         AE_EVERFULL_REQUESTS_SOURCE = BUILDER
                 .comment("Whether or not filling a bucket/bottle/flask from the Everfull Urn consumes nearby Source")
                 .comment("Determined by \"waterUrnCost\" in the Ars Elemental config")

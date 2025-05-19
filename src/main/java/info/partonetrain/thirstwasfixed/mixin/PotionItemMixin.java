@@ -16,12 +16,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PotionItem.class)
 public class PotionItemMixin {
     //fix for https://github.com/ghen-git/Thirst-Mod/issues/209
-    @Inject(method = "finishUsingItem", at = @At("TAIL"))
-    public void onFinishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving, CallbackInfoReturnable<ItemStack> cir, @Local Player player)
-    {
-        if(Config.FIX_209.get() && player != null)
-        {
-            PlayerThirst.drink(stack, player);
-        }
-    }
+//    @Inject(method = "finishUsingItem", at = @At("TAIL"))
+//    public void onFinishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving, CallbackInfoReturnable<ItemStack> cir, @Local Player player)
+//    {
+//        if(Config.FIX_209.get() && player != null)
+//        {
+//            PlayerThirst.drink(stack, player);
+//        }
+//    }
 }
