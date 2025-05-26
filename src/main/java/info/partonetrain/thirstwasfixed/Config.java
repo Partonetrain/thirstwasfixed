@@ -14,12 +14,16 @@ public class Config
     public static ModConfigSpec.IntValue DRIPSTONE_PURITY;
     public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
+
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_CAULDRON;
     public static ModConfigSpec.BooleanValue AN_FLASK_EMPTY;
     public static ModConfigSpec.IntValue AN_FLASK_SIZE;
+    public static ModConfigSpec.BooleanValue AN_ALCHEMISTS_CROWN;
+
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FILL_FROM;
+    public static ModConfigSpec.BooleanValue AE_EVERFULL_DRINK_FROM;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FLASK;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_REQUESTS_SOURCE;
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
@@ -83,6 +87,9 @@ public class Config
                 .comment("If left at 8, the capacity will not be touched (in case Ars Nouveau makes it configurable in the future)")
                 .comment("If you change this, you should also change Ars Nouveau's lang file (the keys ars_nouveau.page1.potion_flask and tooltip.potion_flask) to match")
                 .defineInRange("Potion Flask Size", 8, 1, 64);
+        AN_ALCHEMISTS_CROWN = BUILDER
+                .comment("Whether or not using the Ars Nouveau Alchemist's Crown should restore thirst")
+                .define("Alchemist's Crown Restore Thirst", true);
         BUILDER.pop();
 
         BUILDER.push("Ars Elemental");
@@ -95,6 +102,10 @@ public class Config
                 .comment("Whether or not water with purity can be taken from the Everfull Urn with bottles and buckets")
                 .comment("If Potion Flasks Everfull Urn is true, potion flasks will also be able to pick up water from the Everfull Urn")
                 .define("Fill from Everfull Urn", true);
+        AE_EVERFULL_DRINK_FROM = BUILDER
+                .comment("Whether or not the Everfull Urn can be drunk from directly by right-clicking it with an empty hand")
+                .comment("The amount of thirst/quenchness restored is set in the Thirst config handDrinkingHydration and handDrinkingQuenched, and these values are used even if canDrinkByHand is false")
+                .define("Drink from Everfull Urn", true);
         AE_EVERFULL_FLASK = BUILDER
                 .comment("Whether or not the Flask can be filled from the Everfull Urn")
                 .comment("Requires Fill from Everfull Urn to be true")

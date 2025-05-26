@@ -8,7 +8,7 @@ import net.minecraft.world.item.alchemy.Potions;
 
 public class ArsNouveauHelper {
     public static boolean isContentsEmptyOrWater(MultiPotionContents multiPotionContents) {
-        return multiPotionContents.contents() == PotionContents.EMPTY || multiPotionContents.contents().is(Potions.WATER);
+        return multiPotionContents.contents() == PotionContents.EMPTY || multiPotionContents.contents().is(Potions.WATER) || multiPotionContents.contents().potion().isEmpty();
     }
 
     public static boolean isStackFlask(ItemStack stack){

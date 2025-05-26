@@ -8,6 +8,9 @@ import com.hollingsworth.arsnouveau.api.util.SourceUtil;
 import com.hollingsworth.arsnouveau.common.items.data.MultiPotionContents;
 import com.hollingsworth.arsnouveau.setup.registry.DataComponentRegistry;
 import dev.ghen.thirst.content.purity.WaterPurity;
+import dev.ghen.thirst.foundation.common.capability.IThirst;
+import dev.ghen.thirst.foundation.common.capability.ModAttachment;
+import dev.ghen.thirst.foundation.config.CommonConfig;
 import info.partonetrain.thirstwasfixed.ArsNouveauHelper;
 import info.partonetrain.thirstwasfixed.Config;
 import net.minecraft.core.BlockPos;
@@ -38,11 +41,25 @@ public class EverfullUrnBlockMixin extends Block {
         super(properties);
     }
 
+    //drink from directly
     @Override
     @Unique
     protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if(Config.AE_EVERFULL_DRINK_FROM.get() && player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()){
+            if(thirstwasfixed$requestSourceIfConfigNeeds(level, pos)){
+                IThirst thirst = player.getData(ModAttachment.PLAYER_THIRST);
+                if(thirst.getThirst() == 20){
+                    return InteractionResult.FAIL;
+                }
+
+                thirst.drink(CommonConfig.HAND_DRINKING_HYDRATION.get().intValue(), CommonConfig.HAND_DRINKING_QUENCHED.get().intValue());
+                WaterPurity.givePurityEffects(player, Config.AE_EVERFULL_PURITY.getAsInt());
+                level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+                return InteractionResult.SUCCESS;
+            }
+        }
         return InteractionResult.PASS;
-        //if config.drink_from_urn
     }
 
     //set bottle/bucket purity

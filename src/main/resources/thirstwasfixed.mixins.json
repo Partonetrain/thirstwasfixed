@@ -11,6 +11,7 @@
     "PotionItemMixin",
     "ae.EverfullUrnBlockMixin",
     "ae.EverfullUrnTileMixin",
+    "an.PacketConsumePotionMixin",
     "an.PotionFlaskItemMixin",
     "ftbum.FTBUltimineMixin"
   ],
