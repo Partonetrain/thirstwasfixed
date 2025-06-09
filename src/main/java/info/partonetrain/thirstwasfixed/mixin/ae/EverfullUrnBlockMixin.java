@@ -87,7 +87,7 @@ public class EverfullUrnBlockMixin extends Block {
             }
             else if(Config.AE_EVERFULL_FLASK.get() && ArsNouveauHelper.isStackFlask(stack)){
                 MultiPotionContents multiPotionContents = stack.getComponents().get(DataComponentRegistry.MULTI_POTION.get());
-                if(ArsNouveauHelper.isContentsEmptyOrWater(multiPotionContents)){
+                 if(ArsNouveauHelper.isContentsEmptyOrWater(multiPotionContents)){
                     if(multiPotionContents.usesRemaining(stack) < multiPotionContents.maxUses()){
 
                         IPotionProvider data = PotionProviderRegistry.from(stack);

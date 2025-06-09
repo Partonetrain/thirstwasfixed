@@ -148,7 +148,7 @@ dependencies {
     implementation("com.hollingsworth.ars_nouveau:ars_nouveau-1.21.1:5.8.0.1059")
     implementation ("com.alexthw.ars_elemental:ars_elemental-1.21.1:0.7.3.0.68") {transitive=false}
 
-    implementation "curse.maven:ftb-ultimine-forge-386134:5671703"
+    implementation "curse.maven:ftb-ultimine-forge-386134:6607451"
     implementation "curse.maven:ftb-library-forge-404465:6466106"
     implementation 'maven.modrinth:architectury-api:13.0.8+neoforge'
     implementation 'maven.modrinth:supplementaries:neoforge_1.21-3.1.7'
@@ -170,7 +170,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description        : mod_description,
-            thirst_version_range        : thirst_version_range
+            thirst_version_range        : thirst_version_range,
+            ftbultimine_version_range        : ftbultimine_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties

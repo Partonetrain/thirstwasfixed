@@ -15,5 +15,7 @@ public class ArsNouveauHelper {
         return stack.is(ItemsRegistry.POTION_FLASK.asItem()) ||
                 stack.is(ItemsRegistry.POTION_FLASK_AMPLIFY.asItem()) ||
                 stack.is(ItemsRegistry.POTION_FLASK_EXTEND_TIME.asItem());
+
     }
+
 }

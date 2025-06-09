@@ -1,6 +1,6 @@
 package info.partonetrain.thirstwasfixed;
 
-import dev.ftb.mods.ftbultimine.integration.FTBUltiminePlugin;
+import dev.ftb.mods.ftbultimine.api.restriction.RegisterRestrictionHandlerEvent;
 import dev.ghen.thirst.content.purity.WaterPurity;
 import dev.ghen.thirst.foundation.config.CommonConfig;
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ public class ThirstWasFixedMod
         NeoForge.EVENT_BUS.register(this);
 
         if(ModList.get().isLoaded("ftbultimine")){
-            FTBUltiminePlugin.register(new ThirstWasFixedUltiminePlugin());
+            RegisterRestrictionHandlerEvent.REGISTER.register(registry -> registry.register(new ThirstWasFixedUltimineRestrictionHandler()));
         }
 
         modContainer.registerConfig(ModConfig.Type.STARTUP, Config.SPEC);
