@@ -5,14 +5,13 @@ import dev.ghen.thirst.foundation.common.capability.IThirst;
 import dev.ghen.thirst.foundation.common.capability.ModAttachment;
 import dev.ghen.thirst.foundation.config.CommonConfig;
 import info.partonetrain.thirstwasfixed.Config;
+import info.partonetrain.thirstwasfixed.ThirstWasFixedMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -20,12 +19,11 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.fml.ModList;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LayeredCauldronBlock.class)
@@ -71,5 +69,12 @@ public class LayeredCauldronBlockMixin extends Block {
     @Inject(method = "receiveStalactiteDrip", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;gameEvent(Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V", ordinal = 0))
     public void thristwasfixed$receiveStalactiteDrip(BlockState state, Level level, BlockPos pos, Fluid fluid, CallbackInfo ci){
         level.setBlock(pos, state.setValue(WaterPurity.BLOCK_PURITY, Config.DRIPSTONE_PURITY.getAsInt() + 1), 3);
+    }
+
+    @ModifyArg(method = "<init>", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/LayeredCauldronBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"))
+    public BlockState thirstwasfixed$registerDefaultState(BlockState state) {
+        //set the default purity to the hardcoded constant
+        //can't make this configurable unfortunately
+        return state.setValue(WaterPurity.BLOCK_PURITY, ThirstWasFixedMod.DEFAULT_BLOCK_PURITY.getValue());
     }
 }

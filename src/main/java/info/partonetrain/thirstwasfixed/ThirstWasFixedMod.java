@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.event.level.ChunkEvent;
+import org.apache.commons.lang3.mutable.MutableInt;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -32,6 +33,8 @@ public class ThirstWasFixedMod
     public static final String MODID = "thirstwasfixed";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static final MutableInt DEFAULT_BLOCK_PURITY = new MutableInt(1);
 
     public static AttributeModifier thirstSpeedModifier = null;
     public ThirstWasFixedMod(IEventBus modEventBus, ModContainer modContainer)
