@@ -1,6 +1,6 @@
 package info.partonetrain.thirstwasfixed;
 
-import dev.ftb.mods.ftbultimine.api.restriction.RegisterRestrictionHandlerEvent;
+import com.mojang.logging.LogUtils;
 import dev.ghen.thirst.content.purity.WaterPurity;
 import dev.ghen.thirst.foundation.config.CommonConfig;
 import net.minecraft.core.BlockPos;
@@ -8,24 +8,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
-import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.event.level.ChunkEvent;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
 @Mod(ThirstWasFixedMod.MODID)
 public class ThirstWasFixedMod
@@ -44,7 +41,7 @@ public class ThirstWasFixedMod
         NeoForge.EVENT_BUS.register(this);
 
         if(ModList.get().isLoaded("ftbultimine")){
-            RegisterRestrictionHandlerEvent.REGISTER.register(registry -> registry.register(new ThirstWasFixedUltimineRestrictionHandler()));
+            ThirstWasFixedUltimineRestrictionHandler.register();
         }
 
         modContainer.registerConfig(ModConfig.Type.STARTUP, Config.SPEC);
