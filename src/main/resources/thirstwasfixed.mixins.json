@@ -13,7 +13,8 @@
     "ae.EverfullUrnTileMixin",
     "an.PacketConsumePotionMixin",
     "an.PotionFlaskItemMixin",
-    "ftbum.FTBUltimineMixin"
+    "ftbum.FTBUltimineMixin",
+    "supps.WaterCauldronInteractionMixin"
   ],
   "client": [],
   "server": [],

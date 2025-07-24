@@ -46,6 +46,10 @@ public class ThirstWasFixedMod
 
         modContainer.registerConfig(ModConfig.Type.STARTUP, Config.SPEC);
         thirstSpeedModifier = new AttributeModifier(ResourceLocation.fromNamespaceAndPath(MODID, "speed_modifier"), Config.THIRST_BONUS_VALUE.get(), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+
+        if(ModList.get().isLoaded("parcool")){
+            ParCoolHelper.initModifiers();
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

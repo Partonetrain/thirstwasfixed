@@ -3,9 +3,11 @@ package info.partonetrain.thirstwasfixed.mixin;
 import dev.ghen.thirst.content.thirst.PlayerThirst;
 import dev.ghen.thirst.foundation.common.capability.IThirst;
 import info.partonetrain.thirstwasfixed.Config;
+import info.partonetrain.thirstwasfixed.ParCoolHelper;
 import info.partonetrain.thirstwasfixed.ThirstWasFixedMod;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,8 +35,10 @@ public class PlayerThirstMixin {
                     //ThirstWasFixedMod.LOGGER.info("Thirst bonus removed");
                     player.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ThirstWasFixedMod.thirstSpeedModifier.id());
                 }
-
             }
+        }
+        if(ModList.get().isLoaded("parcool")){
+            ParCoolHelper.applyModifiers(player, self);
         }
     }
 }

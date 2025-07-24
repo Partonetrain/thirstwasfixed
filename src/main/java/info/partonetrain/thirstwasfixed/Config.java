@@ -29,8 +29,12 @@ public class Config
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
     public static ModConfigSpec.IntValue ULTIMINE_REQUIRES_THIRST;
     //public static ModConfigSpec.IntValue ULTIMINE_USES_THIRST;
-
     public static ModConfigSpec.BooleanValue SUPPS_FIX_FAUCETS;
+    public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_REQUIREMENT;
+    public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_VALUE;
+    public static ModConfigSpec.IntValue PARCOOL_STAMINA_PENALTY_REQUIREMENT;
+    public static ModConfigSpec.IntValue PARCOOL_STAMINA_PENALTY_VALUE;
+
 
     static
     {
@@ -135,12 +139,31 @@ public class Config
          */
         BUILDER.pop();
 
-//        BUILDER.push("Supplementaries");
-//        SUPPS_FIX_FAUCETS = BUILDER
-//                .comment("Whether or not to apply a patch to Supplementaries faucets to allow them to propagate thirst to Cauldrons")
-//                .comment("If false, faucets will simply not set the purity of the cauldron")
-//                .define("Fix Faucets", true);
-//        BUILDER.pop();
+        BUILDER.push("Supplementaries");
+        SUPPS_FIX_FAUCETS = BUILDER
+                .comment("Whether or not to apply a patch to Supplementaries faucets to allow them to propagate thirst to Cauldrons")
+                .comment("If false, faucets will simply not set the purity of the cauldron")
+                .define("Fix Faucets", true);
+        BUILDER.pop();
+
+        BUILDER.push("ParCool");
+        PARCOOL_STAMINA_BONUS_REQUIREMENT = BUILDER
+                .comment("The amount of thirst required to gain a stamina recovery bonus")
+                .comment("If 0, there will be no stamina regeneration bonus")
+                .defineInRange("Stamina Bonus Requirement", 0, 0, 20);
+        PARCOOL_STAMINA_BONUS_VALUE = BUILDER
+                .comment("The amount of stamina regeneration to give when the Stamina Bonus Requirement is met")
+                .comment("This uses the add_value operation")
+                .defineInRange("Thirst Bonus Value", 10, 0, 80);
+        PARCOOL_STAMINA_PENALTY_REQUIREMENT = BUILDER
+                .comment("The amount of thirst that the player must have to NOT incur the stamina regeneration penalty")
+                .comment("If 0, there will be no stamina regeneration penalty")
+                .defineInRange("Stamina Penalty Requirement", 0, 0, 20);
+        PARCOOL_STAMINA_PENALTY_VALUE = BUILDER
+                .comment("The amount of stamina regeneration penalty to give when the Stamina Penalty Requirement is met")
+                .comment("This uses the add_value operation")
+                .defineInRange("Stamina Penalty Value", -10, -20, 0);
+        BUILDER.pop();
 
     }
 
