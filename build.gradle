@@ -51,6 +51,11 @@ repositories {
         url "https://cursemaven.com"
     }
 
+    maven {//ars nouveau
+        name = "BlameJared"
+        url = uri("https://maven.blamejared.com/")
+    }
+
 }
 
 base {
@@ -148,14 +153,14 @@ dependencies {
 
     implementation "curse.maven:thirst-was-taken-679270:6759289"
 
-    implementation("com.hollingsworth.ars_nouveau:ars_nouveau-1.21.1:5.8.0.1059")
+    implementation("com.hollingsworth.ars_nouveau:ars_nouveau-1.21.1:5.11.2.1298")
     implementation ("com.alexthw.ars_elemental:ars_elemental-1.21.1:0.7.3.0.68") {transitive=false}
 
     implementation "curse.maven:ftb-ultimine-forge-386134:6607451"
     implementation "curse.maven:ftb-library-forge-404465:6466106"
     implementation 'maven.modrinth:architectury-api:13.0.8+neoforge'
     implementation 'maven.modrinth:supplementaries:neoforge_1.21-3.1.7'
-    implementation 'maven.modrinth:moonlight:1.21-2.18.13-neoforge'
+    implementation 'maven.modrinth:moonlight:1.21-2.29.16-neoforge'
     implementation "curse.maven:parcool-482378:6797814"
 }
 
@@ -175,7 +180,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_authors            : mod_authors,
             mod_description        : mod_description,
             thirst_version_range        : thirst_version_range,
-            ftbultimine_version_range        : ftbultimine_version_range
+            ftbultimine_version_range        : ftbultimine_version_range,
+            ars_nouveau_version_range        : ars_nouveau_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties

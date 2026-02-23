@@ -27,7 +27,7 @@ public class PacketConsumePotionMixin {
     }
 
     //potion flask
-    @Inject(method = "onServerReceived", at = @At(value = "INVOKE", target = "Lcom/hollingsworth/arsnouveau/api/potion/IPotionProvider;consumeUses(Lnet/minecraft/world/item/ItemStack;ILnet/minecraft/world/entity/LivingEntity;)V"))
+    @Inject(method = "onServerReceived", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;finishUsingItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;"))
     private void thirstwasfixed$onServerReceived2(MinecraftServer minecraftServer, ServerPlayer player, CallbackInfo ci){
         if(Config.AN_ALCHEMISTS_CROWN.get()){
             IThirst thirst = player.getData(ModAttachment.PLAYER_THIRST);
