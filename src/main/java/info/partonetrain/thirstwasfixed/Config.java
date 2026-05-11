@@ -7,7 +7,7 @@ public class Config
     private static final ModConfigSpec.Builder BUILDER;
     public final static ModConfigSpec SPEC;
 
-//    public static ModConfigSpec.BooleanValue FIX_209;
+    //Base
     public static ModConfigSpec.BooleanValue FIX_CAULDRONS;
     public static ModConfigSpec.BooleanValue DRINK_CAULDRONS;
     public static ModConfigSpec.IntValue RAINWATER_PURITY;
@@ -15,6 +15,7 @@ public class Config
     public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
 
+    //As Nouveau
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_CAULDRON;
@@ -22,6 +23,7 @@ public class Config
     public static ModConfigSpec.IntValue AN_FLASK_SIZE;
     public static ModConfigSpec.BooleanValue AN_ALCHEMISTS_CROWN;
 
+    //Ars Elemental;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FILL_FROM;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_DRINK_FROM;
     public static ModConfigSpec.BooleanValue AE_EVERFULL_FLASK;
@@ -29,11 +31,16 @@ public class Config
     public static ModConfigSpec.IntValue AE_EVERFULL_PURITY;
     public static ModConfigSpec.IntValue ULTIMINE_REQUIRES_THIRST;
     //public static ModConfigSpec.IntValue ULTIMINE_USES_THIRST;
+    //Supps
     public static ModConfigSpec.BooleanValue SUPPS_FIX_FAUCETS;
+    //Parcool
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_REQUIREMENT;
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_VALUE;
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_PENALTY_REQUIREMENT;
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_PENALTY_VALUE;
+
+    //Millenaire
+    public static ModConfigSpec.BooleanValue MILLENAIRE_DRINKS;
 
 
     static
@@ -45,10 +52,6 @@ public class Config
 
     public static void register(ModConfigSpec.Builder builder){
         BUILDER.push("General");
-//        FIX_209 = BUILDER
-//                .comment("Whether or not to fix https://github.com/ghen-git/Thirst-Mod/issues/209")
-//                .comment("As of 2.1.3 this has been fixed so you shouldn't need it")
-//                .define("Fix #209", false);
         FIX_CAULDRONS = BUILDER
                 .comment("Whether or not to set water cauldrons without a purity state to the default purity (set in Thirst config) on chunk load")
                 .comment("You should only turn this on if there are already cauldrons in your world that have a purity state of 0 (invalid), otherwise there may be significant performance impact for no reason")
@@ -164,6 +167,13 @@ public class Config
                 .comment("This uses the add_value operation")
                 .defineInRange("Stamina Penalty Value", -10, -20, 0);
         BUILDER.pop();
+
+        BUILDER.push("Millenaire");
+        MILLENAIRE_DRINKS = BUILDER
+                .comment("Whether or not to add thirst values for Millenaire drinks")
+                .define("Millenaire Drinks", true);
+        BUILDER.pop();
+
 
     }
 
