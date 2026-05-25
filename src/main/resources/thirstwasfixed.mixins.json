@@ -16,7 +16,9 @@
     "ftbum.FTBUltimineMixin",
     "supps.WaterCauldronInteractionMixin"
   ],
-  "client": [],
+  "client": [
+    "HUDOverlayHandlerMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

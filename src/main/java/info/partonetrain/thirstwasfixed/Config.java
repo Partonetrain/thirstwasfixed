@@ -15,6 +15,9 @@ public class Config
     public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
 
+    public static ModConfigSpec.IntValue QUENCH_OVERLAY_RIGHT_OFFSET;
+    public static ModConfigSpec.IntValue QUENCH_OVERLAY_TOP_OFFSET;
+
     //As Nouveau
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
@@ -75,6 +78,12 @@ public class Config
                 .comment("The amount of speed bonus to give when the Thirst Bonus Requirement is met")
                 .comment("This uses the add_multiplied_total operation, so 0.1 = 10% speed increase")
                 .defineInRange("Thirst Bonus Value", 0.1, 0, 1);
+        QUENCH_OVERLAY_RIGHT_OFFSET = BUILDER
+                .comment("Right offset for the quench overlay. You only need this if you have AppleSkin installed and the quench overlay is not aligning with your thirst bar on your HUD for some reason")
+                .defineInRange("Quench Overlay Right Offset", 0, -100, 100);
+        QUENCH_OVERLAY_TOP_OFFSET = BUILDER
+                .comment("Top offset for the quench overlay")
+                .defineInRange("Quench Overlay Top Offset", 0, -100, 100);
         BUILDER.pop();
 
         BUILDER.push("Ars Nouveau");
