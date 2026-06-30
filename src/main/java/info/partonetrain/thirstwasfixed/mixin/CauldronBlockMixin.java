@@ -1,6 +1,6 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
-import dev.ghen.thirst.content.purity.WaterPurity;
+import cn.mlus.thirst.content.purity.WaterPurity;
 import info.partonetrain.thirstwasfixed.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

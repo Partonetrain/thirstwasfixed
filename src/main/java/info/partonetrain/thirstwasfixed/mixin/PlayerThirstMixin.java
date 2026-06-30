@@ -1,7 +1,7 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
-import dev.ghen.thirst.content.thirst.PlayerThirst;
-import dev.ghen.thirst.foundation.common.capability.IThirst;
+import cn.mlus.thirst.content.thirst.PlayerThirst;
+import cn.mlus.thirst.foundation.common.capability.IThirst;
 import info.partonetrain.thirstwasfixed.Config;
 import info.partonetrain.thirstwasfixed.ParCoolHelper;
 import info.partonetrain.thirstwasfixed.ThirstWasFixedMod;

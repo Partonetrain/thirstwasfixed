@@ -1,6 +1,10 @@
+# Readme: Version 2.0
+
+As of version 2.0, ThirstWasFixed requires Thirst was Reclaimed by mlus (instead of Thirst was Taken). You can find it [here](https://modrinth.com/mod/thirst-was-reclaimed).
+
 # Thirst was Fixed
 
-This is an addon for Thirst was Taken that adds a few fixes (particularly around Cauldrons) and features to better integrate the mod
+This is an addon for Thirst was Reclaimed that adds a few fixes (particularly around Cauldrons) and features to better integrate the mod
 
 ### Features:
 Option to fix existing Cauldrons in the world that do not have a purity set

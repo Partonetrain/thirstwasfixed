@@ -8,6 +8,7 @@ public class Config
     public final static ModConfigSpec SPEC;
 
     //Base
+    public static ModConfigSpec.IntValue DEFAULT_PURITY;
     public static ModConfigSpec.BooleanValue FIX_CAULDRONS;
     public static ModConfigSpec.BooleanValue DRINK_CAULDRONS;
     public static ModConfigSpec.IntValue RAINWATER_PURITY;
@@ -18,7 +19,7 @@ public class Config
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_RIGHT_OFFSET;
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_TOP_OFFSET;
 
-    //As Nouveau
+    //Ars Nouveau
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_CAULDRON;
@@ -55,8 +56,12 @@ public class Config
 
     public static void register(ModConfigSpec.Builder builder){
         BUILDER.push("General");
+        DEFAULT_PURITY = BUILDER
+                .comment("Purity for water that is missing purity. This is used at several places in this mod, such as Fix Cauldrons and Drink Cauldrons")
+                .comment("This used to be an option in Thirst was Taken, but it was removed in Thirst was Reclaimed, so it has been added here.")
+                .defineInRange("Default Purity", 2, 0, 3);
         FIX_CAULDRONS = BUILDER
-                .comment("Whether or not to set water cauldrons without a purity state to the default purity (set in Thirst config) on chunk load")
+                .comment("Whether or not to set water cauldrons without a purity state to the default purity (set above) on chunk load")
                 .comment("You should only turn this on if there are already cauldrons in your world that have a purity state of 0 (invalid), otherwise there may be significant performance impact for no reason")
                 .comment("This shouldn't be needed for anything else that stores water; water cauldrons are just unusual since their purity is stored in the blockstate")
                 .define("Fix Cauldrons", false);
@@ -114,7 +119,7 @@ public class Config
         AE_EVERFULL_PURITY = BUILDER
                 .comment("The purity of the water provided by the Everfull Urn (AKA Urn Of Endless Waters)")
                 .comment("Water that is bucketed/bottled from, or transferred to a cauldron will have this purity")
-                .comment("(In other cases, the purity will be the default purity set in the Thirst config)")
+                .comment("(In other cases, the purity will be the default purity set above)")
                 .defineInRange("Everfull Urn Purity", 2, 0, 3);
         AE_EVERFULL_FILL_FROM = BUILDER
                 .comment("Whether or not water with purity can be taken from the Everfull Urn with bottles and buckets")

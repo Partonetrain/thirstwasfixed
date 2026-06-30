@@ -1,7 +1,7 @@
 package info.partonetrain.thirstwasfixed;
 
+import cn.mlus.thirst.foundation.common.event.RegisterThirstValueEvent;
 import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
-import dev.ghen.thirst.foundation.common.event.RegisterThirstValueEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;

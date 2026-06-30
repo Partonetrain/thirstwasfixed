@@ -1,6 +1,6 @@
 package info.partonetrain.thirstwasfixed;
 
-import dev.ghen.thirst.foundation.common.capability.IThirst;
+import cn.mlus.thirst.foundation.common.capability.IThirst;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;

@@ -1,20 +1,7 @@
 package info.partonetrain.thirstwasfixed.mixin.ftbum;
 
-import dev.architectury.event.EventResult;
-import dev.architectury.utils.value.IntValue;
 import dev.ftb.mods.ftbultimine.FTBUltimine;
-import dev.ghen.thirst.foundation.common.capability.IThirst;
-import dev.ghen.thirst.foundation.common.capability.ModAttachment;
-import info.partonetrain.thirstwasfixed.Config;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FTBUltimine.class)
 public class FTBUltimineMixin {

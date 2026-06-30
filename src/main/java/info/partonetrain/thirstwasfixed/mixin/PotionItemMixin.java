@@ -1,7 +1,7 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.ghen.thirst.content.thirst.PlayerThirst;
+import cn.mlus.thirst.content.thirst.PlayerThirst;
 import info.partonetrain.thirstwasfixed.Config;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

@@ -1,9 +1,9 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
-import dev.ghen.thirst.content.purity.WaterPurity;
-import dev.ghen.thirst.foundation.common.capability.IThirst;
-import dev.ghen.thirst.foundation.common.capability.ModAttachment;
-import dev.ghen.thirst.foundation.config.CommonConfig;
+import cn.mlus.thirst.content.purity.WaterPurity;
+import cn.mlus.thirst.foundation.common.capability.IThirst;
+import cn.mlus.thirst.foundation.common.capability.ModAttachment;
+import cn.mlus.thirst.foundation.config.CommonConfig;
 import info.partonetrain.thirstwasfixed.Config;
 import info.partonetrain.thirstwasfixed.ThirstWasFixedMod;
 import net.minecraft.core.BlockPos;
@@ -38,7 +38,7 @@ public class LayeredCauldronBlockMixin extends Block {
 
             int purity = state.getValue(WaterPurity.BLOCK_PURITY);
             if(purity == 0){
-                purity = CommonConfig.DEFAULT_PURITY.get();
+                purity = Config.DEFAULT_PURITY.get();
             }
 
             purity--; //block purity is offset by 1

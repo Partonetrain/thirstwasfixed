@@ -1,10 +1,9 @@
 package info.partonetrain.thirstwasfixed.mixin.supps;
 
+import cn.mlus.thirst.content.purity.WaterPurity;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.ghen.thirst.content.purity.WaterPurity;
-import dev.ghen.thirst.content.registry.ThirstComponent;
-import dev.ghen.thirst.foundation.config.CommonConfig;
+import cn.mlus.thirst.content.registry.ThirstComponent;
 import info.partonetrain.thirstwasfixed.Config;
 import net.mehvahdjukaar.moonlight.api.fluids.FluidOffer;
 import net.minecraft.core.BlockPos;
@@ -27,7 +26,7 @@ public class WaterCauldronInteractionMixin {
                 purity = offer.fluid().get(ThirstComponent.PURITY);
             } catch (NullPointerException e) {
                 //No purity? set to default
-                purity = CommonConfig.DEFAULT_PURITY.get();
+                purity = Config.DEFAULT_PURITY.get();
             }
             level.setBlock(pos, level.getBlockState(pos).setValue(WaterPurity.BLOCK_PURITY, purity + 1), 3);
             //block purity is offset by 1
@@ -42,7 +41,7 @@ public class WaterCauldronInteractionMixin {
             try {
                 purity = offer.fluid().get(ThirstComponent.PURITY);
             } catch (NullPointerException e) {
-                purity = CommonConfig.DEFAULT_PURITY.get();
+                purity = Config.DEFAULT_PURITY.get();
             }
             level.setBlock(pos, level.getBlockState(pos).setValue(WaterPurity.BLOCK_PURITY, purity + 1), 3);
         }

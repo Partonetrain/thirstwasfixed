@@ -2,8 +2,8 @@ package info.partonetrain.thirstwasfixed;
 
 import dev.ftb.mods.ftbultimine.api.restriction.RegisterRestrictionHandlerEvent;
 import dev.ftb.mods.ftbultimine.api.restriction.RestrictionHandler;
-import dev.ghen.thirst.foundation.common.capability.IThirst;
-import dev.ghen.thirst.foundation.common.capability.ModAttachment;
+import cn.mlus.thirst.foundation.common.capability.IThirst;
+import cn.mlus.thirst.foundation.common.capability.ModAttachment;
 import net.minecraft.world.entity.player.Player;
 
 public class ThirstWasFixedUltimineRestrictionHandler implements RestrictionHandler {

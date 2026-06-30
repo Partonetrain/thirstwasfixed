@@ -1,6 +1,6 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
-import dev.ghen.thirst.foundation.gui.appleskin.HUDOverlayHandler;
+import cn.mlus.thirst.foundation.gui.appleskin.HUDOverlayHandler;
 import info.partonetrain.thirstwasfixed.Config;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
