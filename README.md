@@ -13,13 +13,17 @@ Option to drink directly from Cauldrons with an empty hand
 Options to set the purity of rainwater and Pointed Dripstone water
 
 Ars Nouveau Potion Flasks can:
-    - restore Thirst
-    - optionally be filled by Water source blocks and Cauldrons like Glass Bottles
-    - optionally have increased capacity
+- restore Thirst
+- optionally be filled by Water source blocks and Cauldrons like Glass Bottles
+- optionally have increased capacity
 
 Ars Elemental's Urn of Endless Waters can:
-    - Set a configured purity on filled Cauldrons
-    - optionally fill Buckets and Bottles with a configured purity
-    - optionally fill Potion Flasks
+- Set a configured purity on filled Cauldrons
+- optionally fill Buckets and Bottles with a configured purity
+- optionally fill Potion Flasks
 
 FTB Ultimine: option to require a set amount of Thirst to use Ultimine
+
+ParCool: Options for stamina regeneration bonus or penalty depending on thirst
+
+Amendments: Boiling cauldrons purify water
