@@ -25,10 +25,10 @@ public class MixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         String[] packageTree = mixinClassName.split("\\.");
 
-        if (Arrays.asList(packageTree).contains("an")) {
+        if (Arrays.asList(packageTree).contains("a_n")) {
             return LoadingModList.get().getModFileById("ars_nouveau") != null;
         }
-        if (Arrays.asList(packageTree).contains("ae")) {
+        if (Arrays.asList(packageTree).contains("a_e")) {
             return LoadingModList.get().getModFileById("ars_elemental") != null;
         }
         if (Arrays.asList(packageTree).contains("ftbum")) {
@@ -36,6 +36,9 @@ public class MixinPlugin implements IMixinConfigPlugin {
         }
         if (Arrays.asList(packageTree).contains("supps")) {
             return LoadingModList.get().getModFileById("supplementaries") != null;
+        }
+        if (Arrays.asList(packageTree).contains("amendments")) {
+            return LoadingModList.get().getModFileById("amendments") != null;
         }
 
         return true;

@@ -25,6 +25,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LayeredCauldronBlock.class)
 public class LayeredCauldronBlockMixin extends Block {
@@ -76,5 +77,12 @@ public class LayeredCauldronBlockMixin extends Block {
         //set the default purity to the hardcoded constant
         //can't make this configurable unfortunately
         return state.setValue(WaterPurity.BLOCK_PURITY, ThirstWasFixedMod.DEFAULT_BLOCK_PURITY.getValue());
+    }
+
+    @Inject(method = "getAnalogOutputSignal", at=@At("HEAD"), cancellable = true)
+    public void thirstwasfixed$getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, CallbackInfoReturnable<Integer> cir){
+        if(Config.CAULDRON_COMPARATOR_PURITY.getAsBoolean() && state.is(Blocks.WATER_CAULDRON)){
+            cir.setReturnValue(state.getValue(WaterPurity.BLOCK_PURITY));
+        }
     }
 }

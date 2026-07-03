@@ -1,4 +1,4 @@
-package info.partonetrain.thirstwasfixed.mixin.an;
+package info.partonetrain.thirstwasfixed.mixin.a_n;
 
 import com.hollingsworth.arsnouveau.api.potion.IPotionProvider;
 import com.hollingsworth.arsnouveau.api.registry.PotionProviderRegistry;

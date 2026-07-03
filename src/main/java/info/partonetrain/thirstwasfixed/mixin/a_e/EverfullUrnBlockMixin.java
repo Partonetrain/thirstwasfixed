@@ -1,4 +1,4 @@
-package info.partonetrain.thirstwasfixed.mixin.ae;
+package info.partonetrain.thirstwasfixed.mixin.a_e;
 
 import alexthw.ars_elemental.common.blocks.EverfullUrnBlock;
 import alexthw.ars_elemental.common.blocks.EverfullUrnTile;

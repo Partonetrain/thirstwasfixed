@@ -1,4 +1,4 @@
-package info.partonetrain.thirstwasfixed.mixin.an;
+package info.partonetrain.thirstwasfixed.mixin.a_n;
 
 import cn.mlus.thirst.content.thirst.PlayerThirst;
 import com.hollingsworth.arsnouveau.common.network.PacketConsumePotion;

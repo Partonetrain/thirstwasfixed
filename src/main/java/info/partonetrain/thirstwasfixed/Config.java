@@ -15,6 +15,7 @@ public class Config
     public static ModConfigSpec.IntValue DRIPSTONE_PURITY;
     public static ModConfigSpec.IntValue THIRST_BONUS_REQUIREMENT;
     public static ModConfigSpec.DoubleValue THIRST_BONUS_VALUE;
+    public static ModConfigSpec.BooleanValue CAULDRON_COMPARATOR_PURITY;
 
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_RIGHT_OFFSET;
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_TOP_OFFSET;
@@ -37,6 +38,8 @@ public class Config
     //public static ModConfigSpec.IntValue ULTIMINE_USES_THIRST;
     //Supps
     public static ModConfigSpec.BooleanValue SUPPS_FIX_FAUCETS;
+    //amendments
+    public static ModConfigSpec.IntValue AMENDMENTS_BOIL_PURITY_CHANCE;
     //Parcool
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_REQUIREMENT;
     public static ModConfigSpec.IntValue PARCOOL_STAMINA_BONUS_VALUE;
@@ -83,6 +86,9 @@ public class Config
                 .comment("The amount of speed bonus to give when the Thirst Bonus Requirement is met")
                 .comment("This uses the add_multiplied_total operation, so 0.1 = 10% speed increase")
                 .defineInRange("Thirst Bonus Value", 0.1, 0, 1);
+        CAULDRON_COMPARATOR_PURITY = BUILDER.comment("If true, cauldrons with water in them will have their comparator output replaced to match purity")
+                .comment("0 = Invalid/Not Set, 1 = Dirty, 4 = Purified")
+                .define("Cauldron Comparator Purity", false);
         QUENCH_OVERLAY_RIGHT_OFFSET = BUILDER
                 .comment("Right offset for the quench overlay. You only need this if you have AppleSkin installed and the quench overlay is not aligning with your thirst bar on your HUD for some reason")
                 .defineInRange("Quench Overlay Right Offset", 0, -100, 100);
@@ -186,6 +192,15 @@ public class Config
         MILLENAIRE_DRINKS = BUILDER
                 .comment("Whether or not to add thirst values for Millenaire drinks")
                 .define("Millenaire Drinks", true);
+        BUILDER.pop();
+
+        BUILDER.push("Amendments");
+        AMENDMENTS_BOIL_PURITY_CHANCE = BUILDER
+                .comment("The chance (1 in x) of water purity increasing when a cauldron is boiling")
+                .comment("This is rolled every time the cauldron receives a random tick, ie, the value used in /gamerule random_tick_speed")
+                .comment("At the default random tick speed of 3, there is a 3/4096 or about 0.073% of any particular boiling cauldron to roll this every tick.")
+                .comment("Set to 0 to prevent Amendments boiling cauldrons from purifying water")
+                .defineInRange("Amendments Boil Purity Chance", 1, 0, 5);
         BUILDER.pop();
 
 

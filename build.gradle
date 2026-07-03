@@ -153,6 +153,7 @@ dependencies {
 
     //implementation "curse.maven:thirst-was-taken-679270:6759289"
     implementation 'maven.modrinth:thirst-was-reclaimed:1.21.1-3.0.2'
+    implementation 'maven.modrinth:jade:15.10.5+neoforge'
 
     implementation("com.hollingsworth.ars_nouveau:ars_nouveau-1.21.1:5.11.2.1298")
     implementation ("com.alexthw.ars_elemental:ars_elemental-1.21.1:0.7.3.0.68") {transitive=false}
@@ -161,6 +162,7 @@ dependencies {
     implementation "curse.maven:ftb-library-forge-404465:6466106"
     implementation 'maven.modrinth:architectury-api:13.0.8+neoforge'
     implementation 'maven.modrinth:supplementaries:1.21.1-3.6.4-neoforge'
+    implementation 'maven.modrinth:amendments:EQ3Bxbvq'
     implementation 'maven.modrinth:moonlight:1.21.1-3.0.7-neoforge'
     implementation 'maven.modrinth:patchouli:1.21.1-93-neoforge'
     implementation "curse.maven:parcool-482378:6797814"
