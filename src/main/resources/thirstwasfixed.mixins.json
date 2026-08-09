@@ -15,6 +15,7 @@
     "a_n.PotionFlaskItemMixin",
     "amendments.BoilingWaterCauldronBlockMixin",
     "ftbum.FTBUltimineMixin",
+    "millenaire.MillFoodItemMixin",
     "supps.WaterCauldronInteractionMixin"
   ],
   "client": [
