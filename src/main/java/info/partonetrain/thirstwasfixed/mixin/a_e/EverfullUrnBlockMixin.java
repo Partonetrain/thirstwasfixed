@@ -48,7 +48,7 @@ public class EverfullUrnBlockMixin extends Block {
         if(Config.AE_EVERFULL_DRINK_FROM.get() && player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()){
             if(thirstwasfixed$requestSourceIfConfigNeeds(level, pos)){
                 IThirst thirst = player.getData(ModAttachment.PLAYER_THIRST);
-                if(thirst.getThirst() == 20){
+                if(thirst.getThirst() >= 20){
                     return InteractionResult.FAIL;
                 }
 
