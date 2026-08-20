@@ -9,6 +9,7 @@
     "LayeredCauldronBlockMixin",
     "PlayerThirstMixin",
     "PotionItemMixin",
+    "PotionsMixin",
     "a_e.EverfullUrnBlockMixin",
     "a_e.EverfullUrnTileMixin",
     "a_n.PacketConsumePotionMixin",

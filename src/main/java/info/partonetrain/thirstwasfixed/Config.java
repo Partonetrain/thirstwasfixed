@@ -20,6 +20,9 @@ public class Config
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_RIGHT_OFFSET;
     public static ModConfigSpec.IntValue QUENCH_OVERLAY_TOP_OFFSET;
 
+    public static ModConfigSpec.IntValue FIRE_RESISTANCE_DURATION;
+    public static ModConfigSpec.IntValue LONG_FIRE_RESISTANCE_DURATION;
+
     //Ars Nouveau
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
@@ -95,6 +98,15 @@ public class Config
         QUENCH_OVERLAY_TOP_OFFSET = BUILDER
                 .comment("Top offset for the quench overlay")
                 .defineInRange("Quench Overlay Top Offset", 0, -100, 100);
+        FIRE_RESISTANCE_DURATION = BUILDER
+                .comment("The duration, in ticks, of the vanilla Fire Resistance Potion")
+                .comment("Leave as default for vanilla value")
+                .defineInRange("Fire Resistance Duration", 3600, 1, 432000);
+        LONG_FIRE_RESISTANCE_DURATION = BUILDER
+                .comment("The duration, in ticks, of the Long Fire Resistance Potion")
+                .comment("Leave as default for vanilla value")
+                .defineInRange("Long Fire Resistance Duration", 9600, 1, 432000);
+
         BUILDER.pop();
 
         BUILDER.push("Ars Nouveau");
