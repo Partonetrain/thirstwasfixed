@@ -1,8 +1,11 @@
 package info.partonetrain.thirstwasfixed;
 
+import cn.mlus.thirst.content.registry.ThirstComponent;
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -28,7 +31,7 @@ public class ThirstWasFixedMod
     public static final MutableInt DEFAULT_BLOCK_PURITY = new MutableInt(1);
     public static AttributeModifier thirstSpeedModifier = null;
 
-    static final ArtifactVersion MIN_THIRST_VERSION = new DefaultArtifactVersion("3.0.0");
+    static final ArtifactVersion MIN_THIRST_VERSION = new DefaultArtifactVersion("3.0.4");
 
     public ThirstWasFixedMod(IEventBus modEventBus, ModContainer modContainer)
     {
@@ -53,6 +56,7 @@ public class ThirstWasFixedMod
     }
 
     /*
+    * disabled cuz it wasnt working, neoforge.mods.toml takes care of this
     public static boolean checkForThirstWasReclaimed() {
         Optional<? extends ModContainer> thirstModContainer = ModList.get().getModContainerById("thirst");
         if(thirstModContainer.isPresent()){
@@ -68,7 +72,6 @@ public class ThirstWasFixedMod
         }
         else{
             throw new UnsupportedOperationException("Thirst Was Fixed requires Thirst Was Reclaimed to be installed");
-            //this shouldn't happen because of neoforge.mods.toml but eh why not check for it ig
         }
         return true;
     }

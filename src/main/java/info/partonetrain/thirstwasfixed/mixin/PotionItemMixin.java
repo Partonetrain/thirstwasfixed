@@ -1,27 +1,34 @@
 package info.partonetrain.thirstwasfixed.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import cn.mlus.thirst.content.thirst.PlayerThirst;
+import cn.mlus.thirst.content.registry.ThirstComponent;
 import info.partonetrain.thirstwasfixed.Config;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PotionItem.class)
-public class PotionItemMixin {
-    //fix for https://github.com/ghen-git/Thirst-Mod/issues/209
-//    @Inject(method = "finishUsingItem", at = @At("TAIL"))
-//    public void onFinishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving, CallbackInfoReturnable<ItemStack> cir, @Local Player player)
-//    {
-//        if(Config.FIX_209.get() && player != null)
-//        {
-//            PlayerThirst.drink(stack, player);
-//        }
-//    }
+public class PotionItemMixin extends Item {
+    public PotionItemMixin(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if(Config.ENFORCE_WATER_CONTAINER_ITEM_PURITY.get()){
+            var potion = stack.get(DataComponents.POTION_CONTENTS);
+            if(potion != null) {
+                if (potion.is(Potions.WATER)) {
+                    Integer thirst = stack.get(ThirstComponent.PURITY); //Integer is nullable
+                    if(thirst == null){
+                        stack.set(ThirstComponent.PURITY, 3);
+                    }
+                }
+            }
+        }
+    }
 }

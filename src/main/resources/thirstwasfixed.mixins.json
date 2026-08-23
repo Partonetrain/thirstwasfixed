@@ -5,9 +5,12 @@
   "plugin": "info.partonetrain.thirstwasfixed.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BucketItemMixin",
     "CauldronBlockMixin",
+    "DrinkableItemMixin",
     "LayeredCauldronBlockMixin",
     "PlayerThirstMixin",
+    "PotionContentsMixin",
     "PotionItemMixin",
     "PotionsMixin",
     "a_e.EverfullUrnBlockMixin",

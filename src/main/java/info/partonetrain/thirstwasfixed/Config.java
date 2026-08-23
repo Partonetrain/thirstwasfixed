@@ -23,6 +23,9 @@ public class Config
     public static ModConfigSpec.IntValue FIRE_RESISTANCE_DURATION;
     public static ModConfigSpec.IntValue LONG_FIRE_RESISTANCE_DURATION;
 
+    public static ModConfigSpec.BooleanValue ENFORCE_WATER_CONTAINER_ITEM_PURITY;
+    public static ModConfigSpec.BooleanValue ENFORCE_WATER_POTION_PURITY;
+
     //Ars Nouveau
     public static ModConfigSpec.BooleanValue AN_FLASK_RESTORES_THIRST;
     public static ModConfigSpec.BooleanValue AN_FLASK_PICKS_UP_WATER;
@@ -106,6 +109,14 @@ public class Config
                 .comment("The duration, in ticks, of the Long Fire Resistance Potion")
                 .comment("Leave as default for vanilla value")
                 .defineInRange("Long Fire Resistance Duration", 9600, 1, 432000);
+        ENFORCE_WATER_CONTAINER_ITEM_PURITY = BUILDER
+                .comment("If true, water containing items (water bottles, water buckets, and water bowls) without a purity component will have the purity component added and set to max on inventory tick")
+                .comment("(Example of this: water bottles in the creative inventory that have the Purified tooltip but only have 7 components instead of the expected 8)")
+                .define("Enforce Water Container Component", false);
+        ENFORCE_WATER_POTION_PURITY = BUILDER
+                .comment("If true, any time a water potion is created (ultimately a water bottle), the stack will also have its purity set")
+                .comment("(technical note: this inject is in PotionContents#createItemStack, which other code can act on the return value of.)")
+                .define("Enforce Water Potion Purity", false);
 
         BUILDER.pop();
 
