@@ -55,6 +55,9 @@ public class Config
     //Millenaire
     public static ModConfigSpec.BooleanValue MILLENAIRE_DRINKS;
 
+    //Moonlight
+    public static ModConfigSpec.BooleanValue SOFT_FLUID_WATER_MERGE;
+
 
     static
     {
@@ -224,6 +227,13 @@ public class Config
                 .comment("At the default random tick speed of 3, there is a 3/4096 or about 0.073% of any particular boiling cauldron to roll this every tick.")
                 .comment("Set to 0 to prevent Amendments boiling cauldrons from purifying water")
                 .defineInRange("Amendments Boil Purity Chance", 1, 0, 5);
+        BUILDER.pop();
+
+        BUILDER.push("Moonlight");
+        SOFT_FLUID_WATER_MERGE = BUILDER
+                .comment("If true, Moonlight's soft fluid system (e.g., the kind Supplementaries Jars use) will be capable of merging water FluidStacks that do not have the same purity")
+                .comment("The resulting fluid takes the lower (dirtier) purity value, because dirty water contaminates clean water. Thirst mod has this same mechanic, but only for neoforge fluid tanks")
+                .define("Soft Fluid Water Merge", true);
         BUILDER.pop();
 
 

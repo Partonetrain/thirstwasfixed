@@ -37,6 +37,9 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (Arrays.asList(packageTree).contains("supps")) {
             return LoadingModList.get().getModFileById("supplementaries") != null;
         }
+        if (Arrays.asList(packageTree).contains("moonlight")) {
+            return LoadingModList.get().getModFileById("moonlight") != null;
+        }
         if (Arrays.asList(packageTree).contains("amendments")) {
             return LoadingModList.get().getModFileById("amendments") != null;
         }

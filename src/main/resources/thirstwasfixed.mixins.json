@@ -20,6 +20,7 @@
     "amendments.BoilingWaterCauldronBlockMixin",
     "ftbum.FTBUltimineMixin",
     "millenaire.MillFoodItemMixin",
+    "moonlight.SoftFluidTankMixin",
     "supps.WaterCauldronInteractionMixin"
   ],
   "client": [
