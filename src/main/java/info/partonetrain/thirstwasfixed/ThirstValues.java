@@ -28,6 +28,7 @@ public class ThirstValues {
             event.addDrink(ModItems.SAKE.asItem(), 8, 12);
             event.addDrink(ModItems.WINEBASIC.asItem(), 6, 8);
             event.addDrink(ModItems.WINEFANCY.asItem(), 8, 12);
+            event.addDrink(ModItems.OLIVEOIL.asItem(), 1, 1);
         }
     }
 }
