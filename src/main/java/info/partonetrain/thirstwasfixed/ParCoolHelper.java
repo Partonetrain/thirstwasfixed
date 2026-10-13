@@ -17,6 +17,7 @@ public class ParCoolHelper {
     }
 
     public static void applyModifiers(Player player, IThirst thirst){
+        //bonus
         if(Config.PARCOOL_STAMINA_BONUS_REQUIREMENT.get() != 0){
             if(thirst.getThirst() >= Config.PARCOOL_STAMINA_BONUS_REQUIREMENT.get()){
                 if(player.getAttribute(ParCoolAttributes.STAMINA_RECOVERY).getModifier(staminaBonus.id()) != null){
@@ -33,6 +34,7 @@ public class ParCoolHelper {
             }
         }
 
+        //penalty
         if(Config.PARCOOL_STAMINA_PENALTY_REQUIREMENT.get() != 0){
             if(thirst.getThirst() < Config.PARCOOL_STAMINA_PENALTY_REQUIREMENT.get()){
                 if(player.getAttribute(ParCoolAttributes.STAMINA_RECOVERY).getModifier(staminaPenalty.id()) != null){

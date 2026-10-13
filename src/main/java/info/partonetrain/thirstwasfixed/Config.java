@@ -120,7 +120,29 @@ public class Config
                 .comment("If true, any time a water potion is created (ultimately a water bottle), the stack will also have its purity set")
                 .comment("(technical note: this inject is in PotionContents#createItemStack, which other code can act on the return value of.)")
                 .define("Enforce Water Potion Purity", false);
+        BUILDER.pop();
 
+        BUILDER.push("Moonlight");
+        SOFT_FLUID_WATER_MERGE = BUILDER
+                .comment("If true, Moonlight's soft fluid system (e.g., the kind Supplementaries Jars use) will be capable of merging water FluidStacks that do not have the same purity")
+                .comment("The resulting fluid takes the lower (dirtier) purity value, because dirty water contaminates clean water. Thirst mod has this same mechanic built-in, but only for neoforge fluid tanks")
+                .define("Soft Fluid Water Merge", true);
+        BUILDER.pop();
+
+        BUILDER.push("Supplementaries");
+        SUPPS_FIX_FAUCETS = BUILDER
+                .comment("Whether or not to apply a patch to Supplementaries faucets to allow them to propagate thirst to Cauldrons")
+                .comment("If false, faucets will simply not set the purity of the cauldron")
+                .define("Fix Faucets", true);
+        BUILDER.pop();
+
+        BUILDER.push("Amendments");
+        AMENDMENTS_BOIL_PURITY_CHANCE = BUILDER
+                .comment("The chance (1 in x) of water purity increasing when a cauldron is boiling")
+                .comment("This is rolled every time the cauldron receives a random tick, ie, the value used in /gamerule random_tick_speed")
+                .comment("At the default random tick speed of 3, there is a 3/4096 or about 0.073% of any particular boiling cauldron to roll this every tick.")
+                .comment("Set to 0 to prevent Amendments boiling cauldrons from purifying water")
+                .defineInRange("Amendments Boil Purity Chance", 1, 0, 5);
         BUILDER.pop();
 
         BUILDER.push("Ars Nouveau");
@@ -188,12 +210,6 @@ public class Config
          */
         BUILDER.pop();
 
-        BUILDER.push("Supplementaries");
-        SUPPS_FIX_FAUCETS = BUILDER
-                .comment("Whether or not to apply a patch to Supplementaries faucets to allow them to propagate thirst to Cauldrons")
-                .comment("If false, faucets will simply not set the purity of the cauldron")
-                .define("Fix Faucets", true);
-        BUILDER.pop();
 
         BUILDER.push("ParCool");
         PARCOOL_STAMINA_BONUS_REQUIREMENT = BUILDER
@@ -220,21 +236,7 @@ public class Config
                 .define("Millenaire Drinks", true);
         BUILDER.pop();
 
-        BUILDER.push("Amendments");
-        AMENDMENTS_BOIL_PURITY_CHANCE = BUILDER
-                .comment("The chance (1 in x) of water purity increasing when a cauldron is boiling")
-                .comment("This is rolled every time the cauldron receives a random tick, ie, the value used in /gamerule random_tick_speed")
-                .comment("At the default random tick speed of 3, there is a 3/4096 or about 0.073% of any particular boiling cauldron to roll this every tick.")
-                .comment("Set to 0 to prevent Amendments boiling cauldrons from purifying water")
-                .defineInRange("Amendments Boil Purity Chance", 1, 0, 5);
-        BUILDER.pop();
 
-        BUILDER.push("Moonlight");
-        SOFT_FLUID_WATER_MERGE = BUILDER
-                .comment("If true, Moonlight's soft fluid system (e.g., the kind Supplementaries Jars use) will be capable of merging water FluidStacks that do not have the same purity")
-                .comment("The resulting fluid takes the lower (dirtier) purity value, because dirty water contaminates clean water. Thirst mod has this same mechanic, but only for neoforge fluid tanks")
-                .define("Soft Fluid Water Merge", true);
-        BUILDER.pop();
 
 
     }
