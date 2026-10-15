@@ -1,5 +1,7 @@
 package info.partonetrain.thirstwasfixed;
 
+import net.neoforged.fml.loading.FMLPaths;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,10 +20,9 @@ public class EarlyConfigHelper {
             return;
         }
 
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\thirstwasfixed-startup.toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        final Path configFile = FMLPaths.CONFIGDIR.get().resolve("thirstwasfixed-startup.toml");
         try {
-            List<String> allLines = Files.readAllLines(configFilePath);
+            List<String> allLines = Files.readAllLines(configFile);
 
             Pattern regDur = Pattern.compile("\\s+\"Fire Resistance Duration\" *= *([-+]?[0-9]*.?[0-9]+)");
             Pattern longDur = Pattern.compile("\\s+\"Long Fire Resistance Duration\" *= *([-+]?[0-9]*.?[0-9]+)");
